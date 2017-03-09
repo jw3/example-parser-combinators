@@ -50,8 +50,9 @@ object ParseExpr extends Lang {
     Seq(
       """x = "bam";""",
       """ if(true) then { 1; } ;""",
-      """ a==b; """
-      .stripMargin
+      """ a==b; """,
+      """ if(true) then { 1 } ;"""   // should fail, missing trailing semicolon
+    .stripMargin
     ).foreach(input => println(parseAll(expr, input)))
   }
 }
